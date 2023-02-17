@@ -1,8 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <Nullable>enable</Nullable>
+        <Version>0.0.1</Version>
+        <Authors>AHA Tech</Authors>
     </PropertyGroup>
 
 </Project>

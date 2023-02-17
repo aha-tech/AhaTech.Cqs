@@ -70,7 +70,7 @@ namespace AhaTech.Cqs.ServerTest
         {
             public Task Handle(NSCommand command, CancellationToken cancellationToken)
             {
-                return Task.CompletedTask;
+                throw new ArgumentException("Argex");
             }
         }
     }

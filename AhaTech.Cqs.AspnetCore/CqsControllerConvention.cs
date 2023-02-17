@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
@@ -27,10 +28,7 @@ namespace AhaTech.Cqs.AspnetCore
             {
                 var typeArguments = controller.ControllerType.GetGenericArguments();
                 var route = GetRoute(typeArguments[0]);
-                controller.Selectors.Add(new SelectorModel
-                {
-                    AttributeRouteModel = new AttributeRouteModel(new RouteAttribute(route))
-                });
+                controller.Selectors.Single().AttributeRouteModel!.Template = route;
             }
         }
 

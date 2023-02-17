@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,6 +32,9 @@ namespace AhaTech.Cqs.AspnetCore
             var queries = types.Where(t => t.IsAssignableToGeneric(typeof(IQuery<>))).ToList();
 
             services.AddControllers(conf => conf.Conventions.Add(new CqsControllerConvention(assemblyNamespace)))
+                .AddJsonOptions(
+                    options => options.JsonSerializerOptions.Converters.Add(
+                        new JsonStringEnumConverter(allowIntegerValues: false)))
                 .ConfigureApplicationPartManager(conf =>
                     conf.FeatureProviders.Add(new CqsControllerFeatureProvider(commands, commandsWithResult, queries)));
 
