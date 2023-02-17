@@ -18,7 +18,7 @@ namespace AhaTech.Cqs.AspnetCore
         public QueryController(IQueryHandler<TQuery, TResult> handler, ILoggerFactory loggerFactory)
         {
             _handler = handler;
-            _logger = loggerFactory.CreateLogger(nameof(AhaTech.Cqs.AspnetCore)+"QueryController");
+            _logger = loggerFactory.CreateLogger("AhaTech.Cqs.AspnetCore.QueryController");
         }
 
         [HttpGet]
